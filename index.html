@@ -184,18 +184,18 @@
     z-index: 2;
   }
 
-  /* Circular logo badge — original position inside hero, no shadow */
+  /* Circular logo badge — white bg, gold logo, fully BELOW the wave line */
   .seal-logo {
     position: absolute;
-    bottom: 6px;
+    top: 388px;      /* photo-hero ends at 380, seal entirely on white area below */
     right: 24px;
     width: 76px;
     height: 76px;
     border-radius: 50%;
     border: 3px solid var(--gold);
-    z-index: 5;
+    z-index: 10;
     overflow: hidden;
-    background: var(--ten-red);
+    background: white;
   }
   .seal-logo img {
     width: 100%;
@@ -809,10 +809,11 @@
                 <path d="M0,60 Q97,25 195,48 T390,38 L390,80 L0,80 Z" fill="#ffffff"/>
               </svg>
 
-              <!-- Seal logo (inside .photo-hero, original position) -->
-              <div class="seal-logo">
-                <img src="logos_cropped/ten_badge_tight.png" alt="TEN Consultancy">
-              </div>
+            </div>
+
+            <!-- Seal logo — moved OUT of .photo-hero, sits below wave on white -->
+            <div class="seal-logo">
+              <img src="logos_cropped/ten_badge_white_gold.png" alt="TEN Consultancy">
             </div>
 
             <!-- Name block — Olivia style -->
