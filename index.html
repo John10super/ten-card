@@ -115,6 +115,39 @@
     .status-bar { display: none !important; }
   }
 
+  /* ============ LANGUAGE TOGGLE ============ */
+  .lang-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    background: rgba(26, 26, 34, 0.92);
+    border-radius: 999px;
+    padding: 4px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    font-family: 'Inter', sans-serif;
+    user-select: none;
+  }
+  .lang-toggle button {
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+  }
+  .lang-toggle button.active {
+    background: var(--gold);
+    color: #fff;
+  }
+
   .demo-grid {
     display: flex;
     flex-wrap: wrap;
@@ -820,6 +853,12 @@
 </head>
 <body>
 
+<!-- Language toggle (fixed top-right) -->
+<div class="lang-toggle">
+  <button id="btn-en" onclick="setLang('en')">EN</button>
+  <button id="btn-zh" onclick="setLang('zh')">中文</button>
+</div>
+
 <div class="demo-stage">
 
   <div class="demo-header">
@@ -875,8 +914,8 @@
             <!-- Name block — Olivia style -->
             <div class="name-block">
               <div class="person-name">John Ten</div>
-              <div class="person-role">General Manager</div>
-              <div class="person-affiliation">Wealth & Legacy Planning • TEN Consultancy</div>
+              <div class="person-role" data-i18n="role">General Manager</div>
+              <div class="person-affiliation" data-i18n="affiliation">Wealth & Legacy Planning • TEN Consultancy</div>
             </div>
 
             <div class="thin-divider"></div>
@@ -884,8 +923,8 @@
             <!-- About — Olivia style: short black sentence -->
             <div class="about-section">
               <div class="about-text">
-                Experienced wealth strategist and legacy planner — protecting families across Malaysia.
-                <span class="quote">"Protect. Preserve. Pass On."</span>
+                <span data-i18n="about">Experienced wealth strategist and legacy planner — protecting families across Malaysia.</span>
+                <span class="quote" data-i18n="quote">"Protect. Preserve. Pass On."</span>
               </div>
             </div>
 
@@ -897,35 +936,35 @@
                 <div class="ic-circle">📞</div>
                 <div class="info">
                   <div class="info-val">016-886 0255</div>
-                  <div class="info-label">Mobile · Tap to Call</div>
+                  <div class="info-label" data-i18n="lbl_mobile">Mobile · Tap to Call</div>
                 </div>
               </a>
               <a class="contact-row" href="https://wa.me/60168860255" target="_blank" style="text-decoration:none;color:inherit;">
                 <div class="ic-circle">💬</div>
                 <div class="info">
                   <div class="info-val">016-886 0255</div>
-                  <div class="info-label">WhatsApp</div>
+                  <div class="info-label" data-i18n="lbl_wa">WhatsApp</div>
                 </div>
               </a>
               <a class="contact-row" href="mailto:john@tenconsultant.com" style="text-decoration:none;color:inherit;">
                 <div class="ic-circle">✉️</div>
                 <div class="info">
                   <div class="info-val">john@tenconsultant.com</div>
-                  <div class="info-label">Email</div>
+                  <div class="info-label" data-i18n="lbl_email">Email</div>
                 </div>
               </a>
               <a class="contact-row" href="https://tenconsultant.com" target="_blank" style="text-decoration:none;color:inherit;">
                 <div class="ic-circle">🌐</div>
                 <div class="info">
                   <div class="info-val">tenconsultant.com</div>
-                  <div class="info-label">Website</div>
+                  <div class="info-label" data-i18n="lbl_web">Website</div>
                 </div>
               </a>
               <div class="contact-row">
                 <div class="ic-circle">📍</div>
                 <div class="info">
-                  <div class="info-val address">Bangunan AmBank Group, Level 4 (Life Division)<br>Jalan Haji Taha, 93400 Kuching, Sarawak</div>
-                  <div class="info-label">Office</div>
+                  <div class="info-val address" data-i18n-html="address">Bangunan AmBank Group, Level 4 (Life Division)<br>Jalan Haji Taha, 93400 Kuching, Sarawak</div>
+                  <div class="info-label" data-i18n="lbl_office">Office</div>
                 </div>
               </div>
             </div>
@@ -933,8 +972,8 @@
             <!-- Services -->
             <div class="section-title-bar">
               <span class="gold-line"></span>
-              <span class="text">Professional Services</span>
-              <span class="count">10 areas</span>
+              <span class="text" data-i18n="sec_services">Professional Services</span>
+              <span class="count" data-i18n="sec_count">10 areas</span>
             </div>
             <div class="services-grid">
               <div class="service-card featured">
@@ -942,8 +981,8 @@
                   <div class="service-icon">📜</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Will Writing · 遺囑撰寫</div>
-                <div class="service-sub">沒立遺囑 = 法律分配你的資產，不是你的意願</div>
+                <div class="service-title" data-i18n="svc_will_t">Will Writing</div>
+                <div class="service-sub" data-i18n="svc_will_s">No will = the law decides who gets your assets, not you</div>
                 <span class="service-tag">Rockwills · As-Salihin</span>
               </div>
               <div class="service-card">
@@ -951,92 +990,80 @@
                   <div class="service-icon">🏛️</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Family Trust</div>
-                <div class="service-sub">家族信託</div>
+                <div class="service-title" data-i18n="svc_trust_t">Family Trust</div>
+                <div class="service-sub" data-i18n="svc_trust_s">Multi-generation wealth protection</div>
               </div>
               <div class="service-card">
                 <div class="service-row">
                   <div class="service-icon">🔒</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Wealth Relocation</div>
-                <div class="service-sub">財富轉移 · 防詐騙</div>
+                <div class="service-title" data-i18n="svc_reloc_t">Wealth Relocation</div>
+                <div class="service-sub" data-i18n="svc_reloc_s">Asset transfer · Fraud protection</div>
               </div>
               <div class="service-card">
                 <div class="service-row">
                   <div class="service-icon">🛡️</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Life Insurance</div>
-                <div class="service-sub">人壽保險</div>
+                <div class="service-title" data-i18n="svc_life_t">Life Insurance</div>
+                <div class="service-sub" data-i18n="svc_life_s">Income & family protection</div>
               </div>
               <div class="service-card">
                 <div class="service-row">
                   <div class="service-icon">💼</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Insurance Trust</div>
-                <div class="service-sub">保險信託</div>
+                <div class="service-title" data-i18n="svc_instrust_t">Insurance Trust</div>
+                <div class="service-sub" data-i18n="svc_instrust_s">Controlled inheritance</div>
               </div>
               <div class="service-card featured">
                 <div class="service-row">
                   <div class="service-icon">👑</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Legacy Planning · 遺產規劃</div>
-                <div class="service-sub">放大資產 · 快速安全傳承給受益人</div>
-                <span class="service-tag">FAMILY LEGACY</span>
+                <div class="service-title" data-i18n="svc_legacy_t">Legacy Planning</div>
+                <div class="service-sub" data-i18n="svc_legacy_s">Amplify assets · Safe transfer to heirs</div>
+                <span class="service-tag" data-i18n="svc_legacy_tag">FAMILY LEGACY</span>
               </div>
               <div class="service-card">
                 <div class="service-row">
                   <div class="service-icon">🤝</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Partnership Ins.</div>
-                <div class="service-sub">合夥保險</div>
+                <div class="service-title" data-i18n="svc_part_t">Partnership Insurance</div>
+                <div class="service-sub" data-i18n="svc_part_s">Buy-sell agreement funding</div>
               </div>
               <div class="service-card">
                 <div class="service-row">
                   <div class="service-icon">🏢</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Corporate Ins.</div>
-                <div class="service-sub">企業保險</div>
+                <div class="service-title" data-i18n="svc_corp_t">Corporate Insurance</div>
+                <div class="service-sub" data-i18n="svc_corp_s">SME protection</div>
               </div>
               <div class="service-card">
                 <div class="service-row">
                   <div class="service-icon">✈️</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">Travel PA</div>
-                <div class="service-sub">旅遊個人意外</div>
+                <div class="service-title" data-i18n="svc_travel_t">Travel PA</div>
+                <div class="service-sub" data-i18n="svc_travel_s">Travel personal accident</div>
               </div>
               <div class="service-card">
                 <div class="service-row">
                   <div class="service-icon">🚗</div>
                   <span class="service-arrow">→</span>
                 </div>
-                <div class="service-title">General + Fire</div>
-                <div class="service-sub">汽車 · 火險 · PA</div>
+                <div class="service-title" data-i18n="svc_gen_t">General + Fire</div>
+                <div class="service-sub" data-i18n="svc_gen_s">Motor · Fire · PA</div>
               </div>
-            </div>
-
-            <!-- Google Wallet -->
-            <div class="gwallet-card">
-              <div class="gleft">
-                <div class="gicon"></div>
-                <div>
-                  <div class="gtitle">Add to Google Wallet</div>
-                  <div class="gsub">隨時呼出名片給人掃</div>
-                </div>
-              </div>
-              <span class="garrow">›</span>
             </div>
 
             <!-- Social -->
             <div class="section-title-bar">
               <span class="gold-line"></span>
-              <span class="text">Follow Me</span>
+              <span class="text" data-i18n="sec_follow">Follow Me</span>
             </div>
             <div class="social-list">
               <a class="social-bar" href="https://www.facebook.com/share/18E9ng3Nyy/" target="_blank">
@@ -1059,17 +1086,17 @@
                 <div class="sicon">in</div>
                 <div class="stext">
                   <div class="stitle">LinkedIn</div>
-                  <div class="ssub">John Ten · Wealth Advisor</div>
+                  <div class="ssub" data-i18n="li_sub">John Ten · Wealth Advisor</div>
                 </div>
                 <span class="sarrow">›</span>
               </a>
             </div>
 
-            <!-- Add to Contact CTA — clickable vCard download -->
-            <a class="add-cta" href="john_ten.vcf" download="John_Ten.vcf" style="text-decoration:none;">
+            <!-- Add to Contact CTA — clickable vCard download (lang-aware) -->
+            <a id="vcard-cta" class="add-cta" href="john_ten_en.vcf" download="John_Ten.vcf" style="text-decoration:none;">
               <div class="left">
                 <div class="icon">+</div>
-                <div class="add-text">Add to Contact</div>
+                <div class="add-text" data-i18n="cta_add">Add to Contact</div>
               </div>
               <span style="color:white;opacity:0.5;font-size:18px;">›</span>
             </a>
@@ -1187,6 +1214,127 @@
   </div>
 
 </div>
+
+<script>
+  // ============ i18n LANGUAGE SWITCH ============
+  const i18n = {
+    en: {
+      role: "General Manager",
+      affiliation: "Wealth & Legacy Planning · TEN Consultancy",
+      about: "Experienced wealth strategist and legacy planner — protecting families across Malaysia.",
+      quote: '"Protect. Preserve. Pass On."',
+      lbl_mobile: "Mobile · Tap to Call",
+      lbl_wa: "WhatsApp",
+      lbl_email: "Email",
+      lbl_web: "Website",
+      lbl_office: "Office",
+      address: "Bangunan AmBank Group, Level 4 (Life Division)<br>Jalan Haji Taha, 93400 Kuching, Sarawak",
+      sec_services: "Professional Services",
+      sec_count: "10 areas",
+      sec_follow: "Follow Me",
+      svc_will_t: "Will Writing",
+      svc_will_s: "No will = the law decides who gets your assets, not you",
+      svc_trust_t: "Family Trust",
+      svc_trust_s: "Multi-generation wealth protection",
+      svc_reloc_t: "Wealth Relocation",
+      svc_reloc_s: "Asset transfer · Fraud protection",
+      svc_life_t: "Life Insurance",
+      svc_life_s: "Income & family protection",
+      svc_instrust_t: "Insurance Trust",
+      svc_instrust_s: "Controlled inheritance",
+      svc_legacy_t: "Legacy Planning",
+      svc_legacy_s: "Amplify assets · Safe transfer to heirs",
+      svc_legacy_tag: "FAMILY LEGACY",
+      svc_part_t: "Partnership Insurance",
+      svc_part_s: "Buy-sell agreement funding",
+      svc_corp_t: "Corporate Insurance",
+      svc_corp_s: "SME protection",
+      svc_travel_t: "Travel PA",
+      svc_travel_s: "Travel personal accident",
+      svc_gen_t: "General + Fire",
+      svc_gen_s: "Motor · Fire · PA",
+      li_sub: "John Ten · Wealth Advisor",
+      cta_add: "Add to Contact"
+    },
+    zh: {
+      role: "總經理",
+      affiliation: "財富與傳承規劃 · TEN Consultancy",
+      about: "資深財富策略與遺產規劃師 — 守護全馬家庭的傳承之路。",
+      quote: "「守護 · 傳承 · 延續」",
+      lbl_mobile: "手機 · 點擊撥打",
+      lbl_wa: "WhatsApp 對話",
+      lbl_email: "電郵",
+      lbl_web: "官網",
+      lbl_office: "辦公室",
+      address: "AmBank Group 大樓 4 樓（人壽部門）<br>Jalan Haji Taha, 93400 古晉, 砂拉越",
+      sec_services: "專業服務",
+      sec_count: "10 大領域",
+      sec_follow: "關注我",
+      svc_will_t: "遺囑撰寫",
+      svc_will_s: "沒立遺囑 = 法律分配你的資產，不是你的意願",
+      svc_trust_t: "家族信託",
+      svc_trust_s: "跨代財富保障",
+      svc_reloc_t: "財富轉移",
+      svc_reloc_s: "資產搬移 · 防詐騙",
+      svc_life_t: "人壽保險",
+      svc_life_s: "收入與家庭保障",
+      svc_instrust_t: "保險信託",
+      svc_instrust_s: "受控傳承",
+      svc_legacy_t: "遺產規劃",
+      svc_legacy_s: "放大資產 · 安全傳承給受益人",
+      svc_legacy_tag: "家族傳承",
+      svc_part_t: "合夥保險",
+      svc_part_s: "Buy-sell 資金準備",
+      svc_corp_t: "企業保險",
+      svc_corp_s: "中小企保障",
+      svc_travel_t: "旅遊意外",
+      svc_travel_s: "境外個人意外險",
+      svc_gen_t: "一般保險",
+      svc_gen_s: "汽車 · 火險 · 個人意外",
+      li_sub: "John Ten · 財富顧問",
+      cta_add: "存入通訊錄"
+    }
+  };
+
+  function setLang(lang) {
+    const dict = i18n[lang];
+    // Text content
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+    // HTML content (for line breaks etc.)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key]) el.innerHTML = dict[key];
+    });
+    // Toggle button active state
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+    // Update vCard download link
+    const vcard = document.getElementById('vcard-cta');
+    if (vcard) {
+      vcard.setAttribute('href', `john_ten_${lang}.vcf`);
+      vcard.setAttribute('download', lang === 'zh' ? 'John_Ten_田晉.vcf' : 'John_Ten.vcf');
+    }
+    // Update html lang attribute
+    document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-Hant' : 'en');
+    // Persist
+    try { localStorage.setItem('ten_card_lang', lang); } catch(e) {}
+  }
+
+  // Initial: read from localStorage or detect browser
+  (function initLang() {
+    let saved = null;
+    try { saved = localStorage.getItem('ten_card_lang'); } catch(e) {}
+    if (saved && i18n[saved]) {
+      setLang(saved);
+    } else {
+      const bl = (navigator.language || 'en').toLowerCase();
+      setLang(bl.startsWith('zh') ? 'zh' : 'en');
+    }
+  })();
+</script>
 
 </body>
 </html>
