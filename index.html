@@ -82,6 +82,39 @@
   .demo-header h1 .accent { color: var(--gold); font-style: italic; }
   .demo-header p { color: var(--ink-3); font-size: 13px; line-height: 1.7; }
 
+  /* ============ PRODUCTION CLEAN MODE ============
+     Hide all dev annotations — public visitors only see the card */
+  .demo-header,
+  .demo-label,
+  .annotation,
+  .design-signature,
+  .demo-frame:nth-of-type(2) { display: none !important; }
+  .demo-stage {
+    padding: 32px 16px !important;
+    gap: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 100vh;
+  }
+  .demo-grid {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0 !important;
+  }
+  @media (max-width: 480px) {
+    .demo-stage { padding: 0 !important; background: #FFFFFF !important; }
+    .iphone {
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      width: 100% !important;
+      height: 100vh !important;
+      border: none !important;
+    }
+    .notch { display: none !important; }
+    .iphone-screen { border-radius: 0 !important; }
+    .status-bar { display: none !important; }
+  }
+
   .demo-grid {
     display: flex;
     flex-wrap: wrap;
