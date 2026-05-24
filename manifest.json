@@ -4,8 +4,8 @@
   "description": "Wealth Advisor · Legacy Planning · Insurance",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1A1A22",
-  "theme_color": "#1A1A22",
+  "background_color": "#0A2540",
+  "theme_color": "#0A2540",
   "orientation": "portrait",
   "icons": [
     {

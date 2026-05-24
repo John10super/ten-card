@@ -7,7 +7,7 @@
 <meta name="description" content="Wealth Advisor · Legacy Planning · Insurance · Kuching, Sarawak">
 <!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1A1A22">
+<meta name="theme-color" content="#0A2540">
 <meta name="mobile-web-app-capable" content="yes">
 <!-- iOS -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,31 +22,37 @@
 <meta property="og:type" content="profile">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
 
   :root {
-    --gold: #A88B3A;
-    --gold-dark: #8B7128;
-    --gold-light: #C9A84C;
-    --gold-soft: #F5F1E8;
-    --gold-paper: #FAF7EF;
+    /* 對齊 tenconsultant.com 官網品牌色板（方案 B）*/
+    --gold: #D4AF37;           /* 香檳金 */
+    --gold-dark: #A8862B;
+    --gold-light: #F0D57F;
+    --gold-soft: #F7EFD6;      /* 柔金 tint */
+    --gold-paper: #FBF5E4;     /* 金調紙 */
+    --navy: #0A2540;           /* 深藍主色 */
+    --navy-light: #1A3A5C;
+    --navy-dark: #061A2E;      /* hero 背景 */
+    --ivory: #FAF8F3;          /* 象牙白背景 */
+    --bone: #F5F3EE;
     --ten-red: #FF2B1E;
-    --ink: #1A1A22;
+    --ink: #1A1A1A;            /* charcoal 文字 */
     --ink-2: #36363F;
-    --ink-3: #6E6E7A;
-    --ink-4: #A8A8B0;
-    --charcoal: #4D4D54;       /* 田總指定 CTA 灰色 */
-    --charcoal-hover: #5A5A62;
-    --divider: #ECECF0;
+    --ink-3: #6B6B6B;
+    --ink-4: #9A9AA2;
+    --charcoal: #0A2540;       /* CTA 改用 navy（對齊官網 .btn-navy）*/
+    --charcoal-hover: #1A3A5C;
+    --divider: #E8E6E0;
     --paper: #FFFFFF;
   }
 
   html, body {
-    background: var(--paper);
+    background: var(--ivory);
     color: var(--ink);
-    font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', 'Noto Serif TC', -apple-system, BlinkMacSystemFont, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     line-height: 1.5;
@@ -72,7 +78,7 @@
     margin-bottom: 14px;
   }
   .demo-header h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 44px;
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -122,7 +128,7 @@
     right: 16px;
     z-index: 9999;
     display: flex;
-    background: rgba(26, 26, 34, 0.92);
+    background: rgba(10, 37, 64, 0.94);
     border-radius: 999px;
     padding: 4px;
     backdrop-filter: blur(10px);
@@ -228,7 +234,7 @@
   .photo-hero {
     width: 100%;
     height: 380px;
-    background: linear-gradient(135deg, #3D3D45 0%, #56565F 50%, #45454D 100%);
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-light) 100%);
     position: relative;
     overflow: hidden;
   }
@@ -316,23 +322,24 @@
     padding: 18px 24px 18px;
   }
   .person-name {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    font-weight: 500;
-    color: var(--gold-dark);
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--navy);
     letter-spacing: -0.01em;
     margin-bottom: 6px;
-    line-height: 1.2;
+    line-height: 1.15;
   }
   .person-role {
-    font-size: 15px;
-    color: var(--gold-dark);
-    font-weight: 400;
-    margin-bottom: 2px;
-  }
-  .person-affiliation {
     font-size: 14px;
     color: var(--gold-dark);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 3px;
+  }
+  .person-affiliation {
+    font-size: 13px;
+    color: var(--ink-3);
     font-weight: 400;
   }
 
@@ -356,7 +363,7 @@
   .about-text .quote {
     display: block;
     margin-top: 12px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 17px;
     font-style: italic;
     color: var(--gold-dark);
@@ -723,7 +730,7 @@
     color: var(--ink);
     font-style: italic;
     margin-top: 12px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 600;
   }
 
@@ -900,7 +907,7 @@
 
               <!-- Golden wave -->
               <svg class="golden-wave" viewBox="0 0 390 80" preserveAspectRatio="none">
-                <path d="M0,55 Q97,15 195,40 T390,30 L390,80 L0,80 Z" fill="#A88B3A"/>
+                <path d="M0,55 Q97,15 195,40 T390,30 L390,80 L0,80 Z" fill="#D4AF37"/>
                 <path d="M0,60 Q97,25 195,48 T390,38 L390,80 L0,80 Z" fill="#ffffff"/>
               </svg>
 
@@ -924,7 +931,7 @@
             <div class="about-section">
               <div class="about-text">
                 <span data-i18n="about">Experienced wealth strategist and legacy planner — protecting families across Malaysia.</span>
-                <span class="quote" data-i18n="quote">"Protect. Preserve. Pass On."</span>
+                <span class="quote" data-i18n="quote">"Guarding Wealth. Nurturing Legacy."</span>
               </div>
             </div>
 
@@ -1222,7 +1229,7 @@
       role: "General Manager",
       affiliation: "Wealth & Legacy Planning · TEN Consultancy",
       about: "Experienced wealth strategist and legacy planner — protecting families across Malaysia.",
-      quote: '"Protect. Preserve. Pass On."',
+      quote: '"Guarding Wealth. Nurturing Legacy."',
       lbl_mobile: "Mobile · Tap to Call",
       lbl_wa: "WhatsApp",
       lbl_email: "Email",
@@ -1260,7 +1267,7 @@
       role: "總經理",
       affiliation: "財富與傳承規劃 · TEN Consultancy",
       about: "資深財富策略與遺產規劃師 — 守護全馬家庭的傳承之路。",
-      quote: "「守護 · 傳承 · 延續」",
+      quote: "「守護財富 · 傳承親情」",
       lbl_mobile: "手機 · 點擊撥打",
       lbl_wa: "WhatsApp 對話",
       lbl_email: "電郵",
